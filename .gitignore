@@ -1,0 +1,12 @@
+node_modules
+out
+dist
+.DS_Store
+*.log
+.vite
+.vscode
+.idea
+release
+*.tsbuildinfo
+Thumbs.db
+tmp-*.log

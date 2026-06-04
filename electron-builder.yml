@@ -1,0 +1,56 @@
+appId: com.markdown-live-editor.app
+productName: Markdown Live Editor
+copyright: Copyright © 2026 ${author}
+directories:
+  buildResources: resources
+  output: release/${version}
+files:
+  - out/**/*
+  - resources/**
+  - package.json
+  - '!node_modules/**'
+asar: true
+asarUnpack:
+  - resources/**
+electronDownload:
+  mirror: https://cdn.npmmirror.com/binaries/electron/
+win:
+  artifactName: ${productName}-${version}-${arch}.${ext}
+  target:
+    - target: nsis
+      arch: [x64, ia32]
+  signingHashAlgorithms: [sha256]
+  icon: resources/icon.ico
+nsis:
+  artifactName: ${productName}-${version}-${arch}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: false
+mac:
+  category: public.app-category.productivity
+  artifactName: ${productName}-${version}-${arch}.${ext}
+  target:
+    - target: dmg
+      arch: [x64, arm64]
+  icon: resources/icon-256.png
+  hardenedRuntime: false
+  gatekeeperAssess: false
+  identity: null
+dmg:
+  sign: false
+linux:
+  target:
+    - target: AppImage
+      arch: [x64]
+  category: Utility
+  artifactName: ${productName}-${version}-${arch}.${ext}
+  icon: resources/icon-256.png
+publish:
+  provider: generic
+  url: https://example.com/releases
+  channel: latest
